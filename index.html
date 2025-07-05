@@ -104,38 +104,26 @@
     .club-header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       font-weight: 600;
     }
     .club-icon {
-      width: 36px;
-      height: 36px;
+      width: 36px; height: 36px;
       border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 0.9rem;
-      flex-shrink: 0;
+      display: flex; justify-content: center; align-items: center;
+      color: white; font-size: 0.9rem; flex-shrink: 0;
     }
     .club-tagline { margin-top: 4px; font-size: 0.9rem; color: #4b5563; }
     .category-tag {
-      background: #e0e7ff;
-      color: #3730a3;
-      padding: 4px 10px;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      margin-top: 6px;
-      width: fit-content;
+      background: #e0e7ff; color: #3730a3;
+      padding: 4px 10px; border-radius: 999px;
+      font-size: 0.75rem; font-weight: 500;
+      margin-top: 6px; width: fit-content;
     }
     .club-meta {
-      display: flex;
-      align-items: center;
-      font-size: 0.78rem;
-      color: #6b7280;
-      gap: 10px;
-      margin-top: 6px;
+      display: flex; align-items: center;
+      font-size: 0.78rem; color: #6b7280;
+      gap: 10px; margin-top: 6px;
     }
     .club-meta i { color: #2563eb; }
     .club-meta .dot { color: #16a34a; font-size: 0.6rem; }
@@ -143,33 +131,21 @@
     .bottom-nav {
       height: 80px;
       background: #ffffff;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
+      display: flex; justify-content: space-around; align-items: flex-start;
       border-top: 1px solid #e5e7eb;
       color: #9ca3af;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
-      border-radius: 0;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      width: 100%; border-radius: 0;
+      padding-top: 8px; /* lift icons */
     }
     .bottom-nav .tab {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.7rem;
-      gap: 4px;
-      font-weight: 600;
+      display: flex; flex-direction: column; align-items: center;
+      font-size: 0.7rem; gap: 4px; font-weight: 600;
     }
     .bottom-nav .tab i { font-size: 1.2rem; }
     .bottom-nav .tab img {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid transparent;
+      width: 28px; height: 28px; border-radius: 50%;
+      object-fit: cover; border: 2px solid transparent;
     }
     .bottom-nav .tab.active img { border-color: #2563eb; }
     .bottom-nav .active { color: #2563eb; }
@@ -200,7 +176,7 @@
     <div class="club-card">
       <div class="club-header">
         <div class="club-icon" style="background:#ec4899;"><i class="fas fa-code"></i></div>
-        Girls Who Code
+        Girls Who Code <i class="fas fa-check-circle" style="color:#2563eb;font-size:0.75rem;"></i>
       </div>
       <div class="club-tagline">Live the experience</div>
       <div class="category-tag"><i class="fas fa-laptop-code"></i> Tech</div>
@@ -224,7 +200,7 @@
     <div class="club-card">
       <div class="club-header">
         <div class="club-icon" style="background:#8b5cf6;"><i class="fas fa-scale-balanced"></i></div>
-        Criminal Justice Association
+        Criminal Justice Association <i class="fas fa-check-circle" style="color:#2563eb;font-size:0.75rem;"></i>
       </div>
       <div class="club-tagline">Empower your community</div>
       <div class="category-tag"><i class="fas fa-graduation-cap"></i> Academic</div>
@@ -270,6 +246,5 @@
       <span>You</span>
     </div>
   </div>
-
 </body>
 </html>
