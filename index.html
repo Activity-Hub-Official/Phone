@@ -1,250 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Activity Hub</title>
 
   <!-- PWA Setup -->
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="manifest" href="manifest.json"/>
+  <meta name="theme-color" content="#ffffff"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+  <link rel="icon" type="image/png" href="icon.png"/>
 
+  <!-- Tailwind config for dark mode -->
+  <script>
+    tailwind.config = { darkMode: 'media' }
+  </script>
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #f9fafb;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: #111827;
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-    }
-    .app-bar {
-      height: 54px;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-      box-shadow: 0 1px 0 rgba(0,0,0,0.06);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .app-bar .title {
-      font-size: 1.4rem;
-      font-weight: 700;
-    }
-    .app-bar .icons {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-    .notification { position: relative; }
-    .notification .badge {
-      position: absolute;
-      top: -6px;
-      right: -6px;
-      background: red;
-      color: white;
-      font-size: 0.6rem;
-      padding: 2px 4px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-    .segmented-control {
-      display: flex;
-      margin: 8px 16px;
-      background: #e5e7eb;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    .segmented-control .segment {
-      flex: 1;
-      text-align: center;
-      padding: 8px 0;
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #6b7280;
-      cursor: pointer;
-      transition: all 0.15s ease;
-    }
-    .segmented-control .segment.active {
-      flex: none;
-      width: calc(33% - 8px);
-      margin: 4px;
-      padding: 6px 0;
-      background: #ffffff;
-      color: #2563eb;
-      border-radius: 8px;
-    }
-    .club-list {
-      flex: 1;
-      overflow-y: auto;
-      padding: 16px;
-      padding-bottom: 120px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .club-card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-      border: 1px solid #e5e7eb;
-    }
-    .club-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-    }
-    .club-icon {
-      width: 36px; height: 36px;
-      border-radius: 50%;
-      display: flex; justify-content: center; align-items: center;
-      color: white; font-size: 0.9rem; flex-shrink: 0;
-    }
-    .club-tagline { margin-top: 4px; font-size: 0.9rem; color: #4b5563; }
-    .category-tag {
-      background: #e0e7ff; color: #3730a3;
-      padding: 4px 10px; border-radius: 999px;
-      font-size: 0.75rem; font-weight: 500;
-      margin-top: 6px; width: fit-content;
-    }
-    .club-meta {
-      display: flex; align-items: center;
-      font-size: 0.78rem; color: #6b7280;
-      gap: 10px; margin-top: 6px;
-    }
-    .club-meta i { color: #2563eb; }
-    .club-meta .dot { color: #16a34a; font-size: 0.6rem; }
-
-    .bottom-nav {
-      height: 80px;
-      background: #ffffff;
-      display: flex; justify-content: space-around; align-items: flex-start;
-      border-top: 1px solid #e5e7eb;
-      color: #9ca3af;
-      position: fixed; bottom: 0; left: 0; right: 0;
-      width: 100%; border-radius: 0;
-      padding-top: 8px; /* lift icons */
-    }
-    .bottom-nav .tab {
-      display: flex; flex-direction: column; align-items: center;
-      font-size: 0.7rem; gap: 4px; font-weight: 600;
-    }
-    .bottom-nav .tab i { font-size: 1.2rem; }
-    .bottom-nav .tab img {
-      width: 28px; height: 28px; border-radius: 50%;
-      object-fit: cover; border: 2px solid transparent;
-    }
-    .bottom-nav .tab.active img { border-color: #2563eb; }
-    .bottom-nav .active { color: #2563eb; }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <!-- App Bar -->
-  <div class="app-bar">
-    <div class="title">Discover</div>
-    <div class="icons">
-      <i class="fas fa-pen-to-square" style="font-size:1.25rem;color:#9ca3af;"></i>
-      <div class="notification">
-        <i class="fas fa-bell" style="font-size:1.25rem;color:#9ca3af;"></i>
-        <span class="badge">5+</span>
+<body class="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
+
+  <!-- Top App Bar -->
+  <header class="h-14 bg-white dark:bg-gray-800 flex items-center justify-between px-4 shadow-sm border-b border-gray-200 dark:border-gray-700">
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Discover</h1>
+    <div class="flex items-center space-x-4">
+      <i class="fas fa-pen-to-square text-gray-400 dark:text-gray-500 text-xl"></i>
+      <div class="relative">
+        <i class="fas fa-bell text-gray-400 dark:text-gray-500 text-xl"></i>
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[0.6rem] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+          5+
+        </span>
       </div>
     </div>
-  </div>
+  </header>
 
   <!-- Segmented Control -->
-  <div class="segmented-control">
-    <div class="segment active">Clubs</div>
-    <div class="segment">Businesses</div>
-    <div class="segment">Projects</div>
+  <div class="flex bg-gray-200 dark:bg-gray-700 rounded-lg m-4 p-1">
+    <button class="flex-1 text-center py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 rounded-lg">
+      Clubs
+    </button>
+    <button class="flex-1 text-center py-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+      Businesses
+    </button>
+    <button class="flex-1 text-center py-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+      Projects
+    </button>
   </div>
 
-  <!-- Club List -->
-  <div class="club-list">
-    <div class="club-card">
-      <div class="club-header">
-        <div class="club-icon" style="background:#ec4899;"><i class="fas fa-code"></i></div>
-        Girls Who Code <i class="fas fa-check-circle" style="color:#2563eb;font-size:0.75rem;"></i>
+  <!-- Content List -->
+  <main class="flex-1 overflow-y-auto px-4 pb-32 space-y-4">
+    <!-- Card 1 -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
+      <div class="flex items-center space-x-2">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-pink-500 text-white text-lg">
+          <i class="fas fa-code"></i>
+        </div>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+          Girls Who Code
+          <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 text-sm ml-1"></i>
+        </h2>
       </div>
-      <div class="club-tagline">Live the experience</div>
-      <div class="category-tag"><i class="fas fa-laptop-code"></i> Tech</div>
-      <div class="club-meta">
-        <i class="fas fa-location-dot"></i> St. John's University
-        <span><i class="fas fa-circle dot"></i> 11 Members</span>
-      </div>
-    </div>
-    <div class="club-card">
-      <div class="club-header">
-        <div class="club-icon" style="background:#3b82f6;"><i class="fas fa-terminal"></i></div>
-        STJ ACM Student Chapter
-      </div>
-      <div class="club-tagline">Innovate your world</div>
-      <div class="category-tag"><i class="fas fa-laptop-code"></i> Tech</div>
-      <div class="club-meta">
-        <i class="fas fa-location-dot"></i> St. John's University
-        <span><i class="fas fa-circle dot"></i> 16 Members</span>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Live the experience</p>
+      <span class="inline-flex items-center mt-2 px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full">
+        <i class="fas fa-laptop-code mr-1"></i>Tech
+      </span>
+      <div class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-400 space-x-2">
+        <i class="fas fa-location-dot text-blue-500 dark:text-blue-400"></i>
+        <span>St. John's University</span>
+        <span class="flex items-center"><i class="fas fa-circle text-green-500 dark:text-green-400 text-xs mr-1"></i>11 Members</span>
       </div>
     </div>
-    <div class="club-card">
-      <div class="club-header">
-        <div class="club-icon" style="background:#8b5cf6;"><i class="fas fa-scale-balanced"></i></div>
-        Criminal Justice Association <i class="fas fa-check-circle" style="color:#2563eb;font-size:0.75rem;"></i>
-      </div>
-      <div class="club-tagline">Empower your community</div>
-      <div class="category-tag"><i class="fas fa-graduation-cap"></i> Academic</div>
-      <div class="club-meta">
-        <i class="fas fa-location-dot"></i> St. John's University
-        <span><i class="fas fa-circle dot"></i> 17 Members</span>
-      </div>
-    </div>
-    <div class="club-card">
-      <div class="club-header">
-        <div class="club-icon" style="background:#facc15;"><i class="fas fa-chart-line"></i></div>
-        Women on Wallstreet
-      </div>
-      <div class="club-tagline">Discover and join</div>
-      <div class="category-tag"><i class="fas fa-briefcase"></i> Business</div>
-      <div class="club-meta">
-        <i class="fas fa-location-dot"></i> St. John's University
-        <span><i class="fas fa-circle dot"></i> 20 Members</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- Bottom Nav -->
-  <div class="bottom-nav">
-    <div class="tab">
-      <i class="fas fa-newspaper"></i>
-      <span>Feed</span>
+    <!-- Card 2 -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
+      <div class="flex items-center space-x-2">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-blue-500 text-white text-lg">
+          <i class="fas fa-terminal"></i>
+        </div>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">STJ ACM Student Chapter</h2>
+      </div>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Innovate your world</p>
+      <span class="inline-flex items-center mt-2 px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full">
+        <i class="fas fa-laptop-code mr-1"></i>Tech
+      </span>
+      <div class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-400 space-x-2">
+        <i class="fas fa-location-dot text-blue-500 dark:text-blue-400"></i>
+        <span>St. John's University</span>
+        <span class="flex items-center"><i class="fas fa-circle text-green-500 dark:text-green-400 text-xs mr-1"></i>16 Members</span>
+      </div>
     </div>
-    <div class="tab active">
-      <i class="fas fa-compass"></i>
-      <span>Discover</span>
+
+    <!-- Card 3 -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
+      <div class="flex items-center space-x-2">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-purple-500 text-white text-lg">
+          <i class="fas fa-scale-balanced"></i>
+        </div>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 flex items-center">
+          Criminal Justice Association
+          <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 text-sm ml-1"></i>
+        </h2>
+      </div>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Empower your community</p>
+      <span class="inline-flex items-center mt-2 px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full">
+        <i class="fas fa-graduation-cap mr-1"></i>Academic
+      </span>
+      <div class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-400 space-x-2">
+        <i class="fas fa-location-dot text-blue-500 dark:text-blue-400"></i>
+        <span>St. John's University</span>
+        <span class="flex items-center"><i class="fas fa-circle text-green-500 dark:text-green-400 text-xs mr-1"></i>17 Members</span>
+      </div>
     </div>
-    <div class="tab">
-      <i class="fas fa-calendar-alt"></i>
-      <span>Events</span>
+
+    <!-- Card 4 -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl p-4 shadow border border-gray-200 dark:border-gray-700">
+      <div class="flex items-center space-x-2">
+        <div class="w-9 h-9 flex items-center justify-center rounded-full bg-yellow-400 text-white text-lg">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Women on Wallstreet</h2>
+      </div>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">Discover and join</p>
+      <span class="inline-flex items-center mt-2 px-3 py-1 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 text-sm font-medium rounded-full">
+        <i class="fas fa-briefcase mr-1"></i>Business
+      </span>
+      <div class="flex items-center mt-3 text-sm text-gray-500 dark:text-gray-400 space-x-2">
+        <i class="fas fa-location-dot text-blue-500 dark:text-blue-400"></i>
+        <span>St. John's University</span>
+        <span class="flex items-center"><i class="fas fa-circle text-green-500 dark:text-green-400 text-xs mr-1"></i>20 Members</span>
+      </div>
     </div>
-    <div class="tab">
-      <i class="fas fa-search"></i>
-      <span>Search</span>
-    </div>
-    <div class="tab">
-      <img src="https://i.imgur.com/zGz4RR3.jpeg" alt="Profile" />
-      <span>You</span>
-    </div>
-  </div>
+  </main>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 h-20 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-around items-start pt-2">
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+      <i class="fas fa-newspaper text-xl"></i>
+      <span class="mt-1 text-xs font-semibold">Feed</span>
+    </button>
+    <button class="flex flex-col items-center text-blue-600 dark:text-blue-400">
+      <i class="fas fa-compass text-xl"></i>
+      <span class="mt-1 text-xs font-semibold">Discover</span>
+    </button>
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+      <i class="fas fa-calendar-alt text-xl"></i>
+      <span class="mt-1 text-xs font-semibold">Events</span>
+    </button>
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+      <i class="fas fa-search text-xl"></i>
+      <span class="mt-1 text-xs font-semibold">Search</span>
+    </button>
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+      <img src="https://i.imgur.com/zGz4RR3.jpeg" alt="You" class="w-7 h-7 rounded-full border-2 border-transparent"/>
+      <span class="mt-1 text-xs font-semibold">You</span>
+    </button>
+  </nav>
+
 </body>
 </html>
