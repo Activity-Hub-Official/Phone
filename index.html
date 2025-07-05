@@ -39,7 +39,7 @@
       z-index: 10;
     }
     .app-bar .title {
-      font-size: 1.1rem;
+      font-size: 1.4rem;    /* increased size */
       font-weight: 700;
     }
     .app-bar .icons {
@@ -114,6 +114,7 @@
     }
     .club-meta i { color: #2563eb; }
     .club-meta .dot { color: #16a34a; font-size: 0.6rem; }
+
     .bottom-nav {
       height: 72px;
       background: #ffffff;
@@ -123,11 +124,11 @@
       border-top: 1px solid #e5e7eb;
       color: #9ca3af;
       position: fixed;
-      bottom: 12px;
+      bottom: 0;              /* flush to bottom */
       left: 0;
       right: 0;
-      width: 100%;
-      border-radius: 12px 12px 0 0;
+      width: 100%;            /* full width */
+      border-radius: 0;       /* straight edges */
     }
     .bottom-nav .tab {
       display: flex;
