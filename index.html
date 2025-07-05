@@ -54,7 +54,7 @@
       flex: 1;
       overflow-y: auto;
       padding: 16px;
-      padding-bottom: 80px;
+      padding-bottom: 100px; /* room for nav */
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -131,8 +131,14 @@
       border-top: 1px solid #e5e7eb;
       color: #9ca3af;
       font-size: 0.9rem;
-      position: sticky;
-      bottom: 0;
+      position: fixed;
+      bottom: 12px; /* lifted slightly for iOS spacing */
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      max-width: 100%;
+      border-radius: 12px;
+      width: 100%;
     }
 
     .bottom-nav i {
@@ -147,8 +153,8 @@
 <body>
   <div class="app-bar">
     <i class="fas fa-bars"></i>
-    <div class="title">Activity Hub</div>
-    <i class="fas fa-plus"></i>
+    <div class="title">Clubs</div>
+    <i class="fas fa-pen-to-square"></i>
   </div>
 
   <div class="club-list">
