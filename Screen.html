@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Activity Hub</title>
+
+  <!-- PWA Setup -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <link rel="icon" type="image/png" href="icon.png" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f9fafb;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #111827;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .app-bar {
+      height: 54px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      font-size: 1rem;
+      font-weight: 600;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .app-bar .title {
+      flex: 1;
+      text-align: center;
+    }
+
+    .club-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      padding-bottom: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .club-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e5e7eb;
+    }
+
+    .club-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+
+    .club-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .club-tagline {
+      margin-top: 4px;
+      font-size: 0.9rem;
+      color: #4b5563;
+    }
+
+    .category-tag {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 6px;
+      width: fit-content;
+    }
+
+    .club-meta {
+      display: flex;
+      align-items: center;
+      font-size: 0.78rem;
+      color: #6b7280;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .club-meta i {
+      color: #2563eb;
+    }
+
+    .club-meta .dot {
+      color: #16a34a;
+      font-size: 0.6rem;
+    }
+
+    .bottom-nav {
+      height: 60px;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      border-top: 1px solid #e5e7eb;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      position: sticky;
+      bottom: 0;
+    }
+
+    .bottom-nav i {
+      font-size: 1.2rem;
+    }
+
+    .bottom-nav .active {
+      color: #2563eb;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-bar">
+    <i class="fas fa-bars"></i>
+    <div class="title">Activity Hub</div>
+    <i class="fas fa-plus"></i>
+  </div>
+
+  <div class="club-list">
+    <div class="club-card">
+      <div class="club-header">
+        <div class="club-icon" style="background: #ec4899;"><i class="fas fa-code"></i></div>
+        Girls Who Code
+      </div>
+      <div class="club-tagline">Live the experience</div>
+      <div class="category-tag"><i class="fas fa-laptop-code"></i> Tech</div>
+      <div class="club-meta">
+        <i class="fas fa-location-dot"></i> St. John's University
+        <span><i class="fas fa-circle dot"></i> 11 Members</span>
+      </div>
+    </div>
+
+    <div class="club-card">
+      <div class="club-header">
+        <div class="club-icon" style="background: #3b82f6;"><i class="fas fa-terminal"></i></div>
+        STJ ACM Student Chapter
+      </div>
+      <div class="club-tagline">Innovate your world</div>
+      <div class="category-tag"><i class="fas fa-laptop-code"></i> Tech</div>
+      <div class="club-meta">
+        <i class="fas fa-location-dot"></i> St. John's University
+        <span><i class="fas fa-circle dot"></i> 16 Members</span>
+      </div>
+    </div>
+
+    <div class="club-card">
+      <div class="club-header">
+        <div class="club-icon" style="background: #8b5cf6;"><i class="fas fa-scale-balanced"></i></div>
+        Criminal Justice Association
+      </div>
+      <div class="club-tagline">Empower your community</div>
+      <div class="category-tag"><i class="fas fa-graduation-cap"></i> Academic</div>
+      <div class="club-meta">
+        <i class="fas fa-location-dot"></i> St. John's University
+        <span><i class="fas fa-circle dot"></i> 17 Members</span>
+      </div>
+    </div>
+
+    <div class="club-card">
+      <div class="club-header">
+        <div class="club-icon" style="background: #facc15;"><i class="fas fa-chart-line"></i></div>
+        Women on Wallstreet
+      </div>
+      <div class="club-tagline">Discover and join</div>
+      <div class="category-tag"><i class="fas fa-briefcase"></i> Business</div>
+      <div class="club-meta">
+        <i class="fas fa-location-dot"></i> St. John's University
+        <span><i class="fas fa-circle dot"></i> 20 Members</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-nav">
+    <div class="tab active"><i class="fas fa-home"></i></div>
+    <div class="tab"><i class="fas fa-users"></i></div>
+    <div class="tab"><i class="fas fa-calendar-alt"></i></div>
+    <div class="tab"><i class="fas fa-search"></i></div>
+    <div class="tab"><i class="fas fa-user"></i></div>
+  </div>
+</body>
+</html>
