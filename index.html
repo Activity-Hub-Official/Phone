@@ -5,55 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Activity Hub</title>
 
-  <!-- PWA & iOS status bar integration -->
+  <!-- PWA Setup & Theme Colors -->
   <link rel="manifest" href="manifest.json"/>
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
   <meta name="theme-color" content="#1f2937" media="(prefers-color-scheme: dark)"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <link rel="icon" href="icon.png"/>
+  <link rel="icon" type="image/png" href="icon.png"/>
 
   <!-- Tailwind + FontAwesome -->
   <script>tailwind.config = { darkMode: 'media' };</script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <style>
-    :root {
-      --safe-top: env(safe-area-inset-top);
-      --safe-bottom: env(safe-area-inset-bottom);
-    }
-    body {
-      margin: 0;
-      padding-top: var(--safe-top);
-      padding-bottom: var(--safe-bottom);
-    }
-  </style>
 </head>
-<body class="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
+<body class="flex flex-col h-screen bg-gray-50 dark:bg-gray-900 pt-14 pb-20">
 
-  <!-- Fixed Top App Bar -->
-  <header
-    class="fixed inset-x-0 top-0 z-50 bg-white dark:bg-gray-800 flex items-center justify-between px-4 shadow-sm border-b border-gray-200 dark:border-gray-700"
-    style="height: calc(3.5rem + var(--safe-top)); padding-top: var(--safe-top);"
-  >
+  <!-- Top App Bar (fixed) -->
+  <header class="fixed inset-x-0 top-0 z-50 h-14 bg-white dark:bg-gray-800 flex items-center justify-between px-4 shadow-sm border-b border-gray-200 dark:border-gray-700">
     <h1 class="text-2xl font-bold text-gray-900 dark:text-gray-100">Discover</h1>
     <div class="flex items-center space-x-4">
       <i class="fas fa-pen-to-square text-gray-400 dark:text-gray-500 text-xl"></i>
       <div class="relative">
         <i class="fas fa-bell text-gray-400 dark:text-gray-500 text-xl"></i>
-        <span
-          class="absolute -top-1 -right-1 bg-red-500 text-white text-[0.5rem] font-semibold w-4 h-4 rounded-full flex items-center justify-center"
-        >5+</span>
+        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[0.5rem] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+          5+
+        </span>
       </div>
     </div>
   </header>
 
-  <!-- Sticky Segmented Control -->
-  <div
-    class="sticky z-40 bg-gray-50 dark:bg-gray-900 px-4 pt-4 pb-2"
-    style="top: calc(3.5rem + var(--safe-top));"
-  >
+  <!-- Segmented Control (sticky under header) -->
+  <div class="sticky top-14 z-40 bg-gray-50 dark:bg-gray-900 px-4 pt-4 pb-2">
     <div class="flex bg-gray-200 dark:bg-gray-700 rounded-lg p-1">
       <button class="flex-1 text-center py-2 text-sm font-medium text-blue-600 dark:text-blue-400 bg-white dark:bg-gray-800 rounded-lg">
         Clubs
@@ -69,19 +51,17 @@
 
   <!-- Club List -->
   <ul class="divide-y divide-gray-200 dark:divide-gray-700 flex-1 overflow-y-auto px-4">
-    <!-- 1: Girls Who Code -->
+    <!-- Club 1 -->
     <li class="py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-3 flex-1 min-w-0">
           <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-pink-500 text-white text-xl">
             <i class="fas fa-code"></i>
           </div>
-          <div class="flex items-center flex-1 min-w-0 space-x-1">
-            <span class="flex-1 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
-              Girls Who Code
-            </span>
-            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 text-sm flex-shrink-0"></i>
-          </div>
+          <h2 class="flex items-center flex-1 min-w-0 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
+            Girls Who Code
+            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 text-sm ml-1 flex-shrink-0"></i>
+          </h2>
         </div>
         <button class="ml-4 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 flex-shrink-0">
           Follow
@@ -102,16 +82,17 @@
         </span>
       </div>
     </li>
-    <!-- 2: STJ ACM Student Chapter -->
+
+    <!-- Club 2 -->
     <li class="py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-3 flex-1 min-w-0">
           <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-blue-500 text-white text-xl">
             <i class="fas fa-terminal"></i>
           </div>
-          <span class="flex-1 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
+          <h2 class="flex-1 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
             STJ ACM Student Chapter
-          </span>
+          </h2>
         </div>
         <button class="ml-4 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 flex-shrink-0">
           Follow
@@ -132,19 +113,18 @@
         </span>
       </div>
     </li>
-    <!-- 3: Criminal Justice Association -->
+
+    <!-- Club 3 -->
     <li class="py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-3 flex-1 min-w-0">
           <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-purple-500 text-white text-xl">
             <i class="fas fa-scale-balanced"></i>
           </div>
-          <div class="flex items-center flex-1 min-w-0 space-x-1">
-            <span class="flex-1 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
-              Criminal Justice Association
-            </span>
-            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 text-sm flex-shrink-0"></i>
-          </div>
+          <h2 class="flex items-center flex-1 min-w-0 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
+            Criminal Justice Association
+            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 text-sm ml-1 flex-shrink-0"></i>
+          </h2>
         </div>
         <button class="ml-4 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 flex-shrink-0">
           Follow
@@ -165,16 +145,17 @@
         </span>
       </div>
     </li>
-    <!-- 4: Women on Wallstreet -->
+
+    <!-- Club 4 -->
     <li class="py-4">
       <div class="flex justify-between items-center">
         <div class="flex items-center space-x-3 flex-1 min-w-0">
           <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-yellow-400 text-white text-xl">
             <i class="fas fa-chart-line"></i>
           </div>
-          <span class="flex-1 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
+          <h2 class="flex-1 text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">
             Women on Wallstreet
-          </span>
+          </h2>
         </div>
         <button class="ml-4 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 flex-shrink-0">
           Follow
@@ -197,11 +178,8 @@
     </li>
   </ul>
 
-  <!-- Fixed Bottom Navigation -->
-  <nav
-    class="fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-around items-start pt-2"
-    style="height: calc(5rem + var(--safe-bottom)); padding-bottom: var(--safe-bottom);"
-  >
+  <!-- Bottom Navigation (fixed) -->
+  <nav class="fixed inset-x-0 bottom-0 z-50 h-20 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 flex justify-around items-start pt-2">
     <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
       <i class="fas fa-newspaper text-xl"></i>
       <span class="mt-1 text-xs font-semibold">Feed</span>
