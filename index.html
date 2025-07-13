@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Activity Hub</title>
 
   <!-- PWA Setup & Theme Colors -->
@@ -18,21 +18,23 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body
   class="flex flex-col h-screen bg-gray-50 dark:bg-gray-900 pb-20"
-  style="padding-top: calc(3.5rem + env(safe-area-inset-top));"
+  style="padding-top: calc(3.5rem + env(safe-area-inset-top)); padding-top: calc(3.5rem + constant(safe-area-inset-top));"
 >
 
   <!-- Top App Bar -->
   <header
     class="fixed inset-x-0 top-0 z-50 bg-white dark:bg-gray-800
            shadow-sm border-b border-gray-200 dark:border-gray-700 flex flex-col"
-    style="height: calc(3.5rem + env(safe-area-inset-top));"
+    style="height: calc(3.5rem + env(safe-area-inset-top)); height: calc(3.5rem + constant(safe-area-inset-top));"
   >
-    <!-- Safe-area filler -->
-    <div class="h-[env(safe-area-inset-top)] bg-white dark:bg-gray-800 w-full"></div>
-    <!-- Toolbar -->
+    <!-- safe-area filler -->
+    <div
+      class="w-full bg-white dark:bg-gray-800"
+      style="height: env(safe-area-inset-top); height: constant(safe-area-inset-top);"
+    ></div>
+    <!-- toolbar -->
     <div class="flex items-center justify-between px-4 h-[3.5rem]">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Discover</h1>
       <div class="flex items-center space-x-4">
@@ -41,8 +43,7 @@
         </button>
         <button aria-label="Notifications" class="relative">
           <i class="fas fa-bell text-gray-400 dark:text-gray-500 text-xl"></i>
-          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[0.5rem]
-                       font-semibold w-4 h-4 rounded-full flex items-center justify-center">
+          <span class="absolute -top-1 -right-1 bg-red-500 text-white text-[0.5rem] font-semibold w-4 h-4 rounded-full flex items-center justify-center">
             5+
           </span>
         </button>
@@ -69,7 +70,6 @@
 
   <!-- Club List -->
   <ul class="divide-y divide-gray-200 dark:divide-gray-700 flex-1 overflow-y-auto px-4">
-
     <!-- Club 1 -->
     <li class="py-4">
       <div class="flex justify-between items-start">
@@ -143,18 +143,18 @@
               <span class="block flex-shrink overflow-hidden whitespace-nowrap truncate">Criminal Justice Association</span>
               <i class="fas fa-check-circle ml-1 text-blue-600 dark:text-blue-400 text-sm flex-shrink-0"></i>
             </h2>
-            <p class="mt-0 leading-tight text-gray-600 dark;text-gray-400 text-sm">Empower your community</p>
+            <p class="mt-0 leading-tight text-gray-600 dark:text-gray-400 text-sm">Empower your community</p>
             <div class="mt-2 flex items-center gap-2 text-xs">
-              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark;text-indigo-300 font-medium rounded-full">
+              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium rounded-full">
                 <i class="fas fa-graduation-cap mr-1"></i>Academic
               </span>
             </div>
-            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark;text-gray-400 whitespace-nowrap">
+            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-location-dot mr-1 text-blue-500 dark;text-blue-400"></i>St. John's University
+                <i class="fas fa-location-dot mr-1 text-blue-500 dark:text-blue-400"></i>St. John's University
               </span>
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-circle mr-1 text-green-500 dark;text-green-400 text-[0.4rem]"></i>17 Members
+                <i class="fas fa-circle mr-1 text-green-500 dark:text-green-400 text-[0.4rem]"></i>17 Members
               </span>
             </div>
           </div>
@@ -174,16 +174,16 @@
             <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">Women on Wallstreet</h2>
             <p class="mt-0 leading-tight text-gray-600 dark:text-gray-400 text-sm">Discover and join</p>
             <div class="mt-2 flex items-center gap-2 text-xs">
-              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark;text-indigo-300 font-medium rounded-full">
+              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium rounded-full">
                 <i class="fas fa-briefcase mr-1"></i>Business
               </span>
             </div>
-            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark;text-gray-400 whitespace-nowrap">
+            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-location-dot mr-1 text-blue-500 dark;text-blue-400"></i>St. John's University
+                <i class="fas fa-location-dot mr-1 text-blue-500 dark:text-blue-400"></i>St. John's University
               </span>
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-circle mr-1 text-green-500 dark;text-green-400 text-[0.4rem]"></i>20 Members
+                <i class="fas fa-circle mr-1 text-green-500 dark:text-green-400 text-[0.4rem]"></i>20 Members
               </span>
             </div>
           </div>
@@ -201,18 +201,18 @@
           </div>
           <div class="flex flex-col flex-1 min-w-0">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">Robotics Club</h2>
-            <p class="mt-0 leading-tight text-gray-600 dark;text-gray-400 text-sm">Build the future</p>
+            <p class="mt-0 leading-tight text-gray-600 dark:text-gray-400 text-sm">Build the future</p>
             <div class="mt-2 flex items-center gap-2 text-xs">
-              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark;text-indigo-300 font-medium rounded-full">
+              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium rounded-full">
                 <i class="fas fa-cogs mr-1"></i>Engineering
               </span>
             </div>
-            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark;text-gray-400 whitespace-nowrap">
+            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-location-dot mr-1 text-blue-500 dark;text-blue-400"></i>St. John's University
+                <i class="fas fa-location-dot mr-1 text-blue-500 dark:text-blue-400"></i>St. John's University
               </span>
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-circle mr-1 text-green-500 dark;text-green-400 text-[0.4rem]"></i>14 Members
+                <i class="fas fa-circle mr-1 text-green-500 dark:text-green-400 text-[0.4rem]"></i>14 Members
               </span>
             </div>
           </div>
@@ -230,18 +230,18 @@
           </div>
           <div class="flex flex-col flex-1 min-w-0">
             <h2 class="text-lg font-semibold text-gray-900 dark:text-gray-100 overflow-hidden whitespace-nowrap truncate">Environmental Society</h2>
-            <p class="mt-0 leading-tight text-gray-600 dark;text-gray-400 text-sm">Green initiatives</p>
+            <p class="mt-0 leading-tight text-gray-600 dark:text-gray-400 text-sm">Green initiatives</p>
             <div class="mt-2 flex items-center gap-2 text-xs">
-              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark;text-indigo-300 font-medium rounded-full">
+              <span class="inline-flex items-center px-2 py-0.5 bg-indigo-100 dark:bg-indigo-900 text-indigo-700 dark:text-indigo-300 font-medium rounded-full">
                 <i class="fas fa-globe-americas mr-1"></i>Community
               </span>
             </div>
-            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark;text-gray-400 whitespace-nowrap">
+            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400 whitespace-nowrap">
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-location-dot mr-1 text-blue-500 dark;text-blue-400"></i>St. John's University
+                <i class="fas fa-location-dot mr-1 text-blue-500 dark:text-blue-400"></i>St. John's University
               </span>
               <span class="flex items-center flex-shrink-0">
-                <i class="fas fa-circle mr-1 text-green-500 dark;text-green-400 text-[0.4rem]"></i>22 Members
+                <i class="fas fa-circle mr-1 text-green-500 dark:text-green-400 text-[0.4rem]"></i>22 Members
               </span>
             </div>
           </div>
@@ -249,7 +249,6 @@
         <button class="ml-4 px-3 py-1.5 bg-blue-600 text-white text-sm font-medium rounded-lg hover:bg-blue-700 flex-shrink-0">Follow</button>
       </div>
     </li>
-
   </ul>
 
   <!-- Bottom Navigation -->
@@ -270,7 +269,7 @@
       <i class="fas fa-search text-xl"></i>
       <span class="mt-1 text-xs font-semibold">Search</span>
     </button>
-    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark.hover:text-gray-300">
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
       <img src="https://i.imgur.com/zGz4RR3.jpeg" alt="You" class="w-7 h-7 rounded-full"/>
       <span class="mt-1 text-xs font-semibold">You</span>
     </button>
