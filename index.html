@@ -16,8 +16,7 @@
 
   <!-- Tailwind + FontAwesome -->
   <script>tailwind.config = { darkMode: 'media' };</script>
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body
@@ -37,6 +36,7 @@
       height: calc(3.5rem + constant(safe-area-inset-top));
     "
   >
+    <!-- safe-area filler -->
     <div
       class="w-full bg-white dark:bg-gray-800"
       style="
@@ -44,6 +44,7 @@
         height: constant(safe-area-inset-top);
       "
     ></div>
+    <!-- toolbar -->
     <div class="flex items-center justify-between px-4 h-[3.5rem]">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Search</h1>
       <button aria-label="Voice Search">
@@ -70,30 +71,30 @@
   <!-- Trending Tags -->
   <div class="px-4 py-2">
     <div class="flex items-center justify-between mb-2">
-      <h2 class="text-sm font-semibold text-gray-700 dark:text-gray-300">
+      <h2 class="text-base font-semibold text-gray-700 dark:text-gray-300">
         Trending
       </h2>
-      <button class="text-xs font-semibold text-blue-600 dark:text-blue-400 inline-flex items-center">
-        See All <i class="fas fa-angle-right ml-1"></i>
+      <button class="text-sm font-semibold text-blue-600 dark:text-blue-400">
+        See All
       </button>
     </div>
     <div class="flex flex-wrap gap-2">
-      <button class="inline-flex items-center px-4 py-1.5 bg-yellow-500 text-white text-xs font-semibold rounded-full">
+      <button class="inline-flex items-center px-4 py-2 bg-yellow-500 text-white text-sm font-semibold rounded-full">
         # Productivity <i class="fas fa-chevron-right ml-2"></i>
       </button>
-      <button class="inline-flex items-center px-4 py-1.5 bg-pink-500 text-white text-xs font-semibold rounded-full">
+      <button class="inline-flex items-center px-4 py-2 bg-pink-500 text-white text-sm font-semibold rounded-full">
         # Tech <i class="fas fa-chevron-right ml-2"></i>
       </button>
-      <button class="inline-flex items-center px-4 py-1.5 bg-indigo-500 text-white text-xs font-semibold rounded-full">
+      <button class="inline-flex items-center px-4 py-2 bg-indigo-500 text-white text-sm font-semibold rounded-full">
         # Developer Tools <i class="fas fa-chevron-right ml-2"></i>
       </button>
-      <button class="inline-flex items-center px-4 py-1.5 bg-blue-500 text-white text-xs font-semibold rounded-full">
+      <button class="inline-flex items-center px-4 py-2 bg-blue-500 text-white text-sm font-semibold rounded-full">
         # Marketing <i class="fas fa-chevron-right ml-2"></i>
       </button>
-      <button class="inline-flex items-center px-4 py-1.5 bg-teal-500 text-white text-xs font-semibold rounded-full">
+      <button class="inline-flex items-center px-4 py-2 bg-teal-500 text-white text-sm font-semibold rounded-full">
         # Artificial Intelligence <i class="fas fa-chevron-right ml-2"></i>
       </button>
-      <button class="inline-flex items-center px-4 py-1.5 bg-green-400 text-white text-xs font-semibold rounded-full">
+      <button class="inline-flex items-center px-4 py-2 bg-green-400 text-white text-sm font-semibold rounded-full">
         # User Experience <i class="fas fa-chevron-right ml-2"></i>
       </button>
     </div>
@@ -151,19 +152,19 @@
       <i class="fas fa-newspaper text-xl"></i>
       <span class="mt-1 text-xs font-semibold">Feed</span>
     </button>
-    <button class="flex flex-col	items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
       <i class="fas fa-compass text-xl"></i>
       <span class="mt-1 text-xs font-semibold">Discover</span>
     </button>
-    <button class="flex flex-col	items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
       <i class="fas fa-calendar-alt text-xl"></i>
       <span class="mt-1 text-xs font-semibold">Events</span>
     </button>
-    <button class="flex flex-col	items-center text-blue-600 dark:text-blue-400">
+    <button class="flex flex-col items-center text-blue-600 dark:text-blue-400">
       <i class="fas fa-search text-xl"></i>
       <span class="mt-1 text-xs font-semibold">Search</span>
     </button>
-    <button class="flex flex-col	items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
+    <button class="flex flex-col items-center text-gray-400 dark:text-gray-500 hover:text-gray-600 dark:hover:text-gray-300">
       <img src="https://i.imgur.com/zGz4RR3.jpeg" alt="You" class="w-7 h-7 rounded-full"/>
       <span class="mt-1 text-xs font-semibold">You</span>
     </button>
