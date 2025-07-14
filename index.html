@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8"/>
-  <!-- viewport-fit=cover so env(safe-area-inset-*) works in iOS PWAs -->
+  <!-- viewport-fit=cover so env(safe-area-inset-*) works in PWAs -->
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>Activity Hub – Feed</title>
 
@@ -47,13 +47,11 @@
     ></div>
     <!-- toolbar -->
     <div class="flex items-center justify-between px-4 h-[3.5rem]">
-      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Feed</h1>
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100">Home</h1>
       <div class="flex items-center space-x-4">
-        <!-- Compose new post -->
         <button aria-label="Compose">
           <i class="fas fa-pen-to-square text-gray-400 dark:text-gray-500 text-xl"></i>
         </button>
-        <!-- Filter feed -->
         <button aria-label="Filter">
           <i class="fas fa-filter text-gray-400 dark:text-gray-500 text-xl"></i>
         </button>
@@ -61,12 +59,62 @@
     </div>
   </header>
 
+  <!-- Following / Recommended Toggle -->
+  <div class="sticky z-40 bg-gray-50 dark:bg-gray-900 px-4 pt-2 pb-2"
+       style="top: calc(3.5rem + env(safe-area-inset-top));">
+    <div class="flex bg-gray-200 dark:bg-gray-700 rounded-full p-1">
+      <button class="flex-1 text-center py-2 text-sm font-medium text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800 rounded-full">
+        Following
+      </button>
+      <button class="flex-1 text-center py-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+        Recommended
+      </button>
+    </div>
+  </div>
+
+  <!-- Stories Carousel -->
+  <div class="px-4 pt-2 pb-4 overflow-x-auto">
+    <div class="flex space-x-4">
+      <!-- Story Item -->
+      <div class="flex-shrink-0 flex flex-col items-center w-16">
+        <div class="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center text-white text-lg">
+          <i class="fas fa-code"></i>
+        </div>
+        <span class="mt-1 text-xs text-gray-700 dark:text-gray-300 truncate">GWC</span>
+      </div>
+      <div class="flex-shrink-0 flex flex-col items-center w-16">
+        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white text-lg">
+          <i class="fas fa-terminal"></i>
+        </div>
+        <span class="mt-1 text-xs text-gray-700 dark:text-gray-300 truncate">ACM</span>
+      </div>
+      <div class="flex-shrink-0 flex flex-col items-center w-16">
+        <div class="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center text-white text-lg">
+          <i class="fas fa-scale-balanced"></i>
+        </div>
+        <span class="mt-1 text-xs text-gray-700 dark:text-gray-300 truncate">CJA</span>
+      </div>
+      <div class="flex-shrink-0 flex flex-col items-center w-16">
+        <div class="w-12 h-12 rounded-full bg-yellow-400 flex items-center justify-center text-white text-lg">
+          <i class="fas fa-briefcase"></i>
+        </div>
+        <span class="mt-1 text-xs text-gray-700 dark:text-gray-300 truncate">WoW</span>
+      </div>
+      <div class="flex-shrink-0 flex flex-col items-center w-16">
+        <div class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white text-lg">
+          <i class="fas fa-robot"></i>
+        </div>
+        <span class="mt-1 text-xs text-gray-700 dark:text-gray-300 truncate">Robotics</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Feed List -->
-  <ul class="divide-y divide-gray-200 dark:divide-gray-700 flex-1 overflow-y-auto px-4 pt-4">
-    <!-- Item 1 -->
+  <ul class="divide-y divide-gray-200 dark:divide-gray-700 flex-1 overflow-y-auto px-4">
+    <!-- Post 1 -->
     <li class="py-4">
       <div class="flex items-start space-x-3">
-        <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-pink-500 text-white text-xl">
+        <div class="w-12 h-12 flex-shrink-0 rounded-lg bg-pink-500 flex items-center justify-center text-white text-xl">
           <i class="fas fa-code"></i>
         </div>
         <div class="flex-1 min-w-0">
@@ -89,10 +137,10 @@
       </div>
     </li>
 
-    <!-- Item 2 -->
+    <!-- Post 2 -->
     <li class="py-4">
       <div class="flex items-start space-x-3">
-        <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-blue-500 text-white text-xl">
+        <div class="w-12 h-12 flex-shrink-0 rounded-lg bg-blue-500 flex items-center justify-center text-white text-xl">
           <i class="fas fa-terminal"></i>
         </div>
         <div class="flex-1 min-w-0">
@@ -100,7 +148,7 @@
             STJ ACM Student Chapter
           </h2>
           <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">
-            “Congratulations to all hackathon winners! Ready for the next challenge? 🏆”
+            “Congratulations to all hackathon winners! 🏆 Ready for the next challenge?”
           </p>
           <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
             <span class="flex items-center">
@@ -114,10 +162,10 @@
       </div>
     </li>
 
-    <!-- Item 3 -->
+    <!-- Post 3 -->
     <li class="py-4">
       <div class="flex items-start space-x-3">
-        <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-lg bg-purple-500 text-white text-xl">
+        <div class="w-12 h-12 flex-shrink-0 rounded-lg bg-purple-500 flex items-center justify-center text-white text-xl">
           <i class="fas fa-scale-balanced"></i>
         </div>
         <div class="flex-1 min-w-0">
@@ -125,7 +173,7 @@
             Criminal Justice Association
           </h2>
           <p class="mt-1 text-gray-600 dark:text-gray-400 text-sm">
-            “Panel on legal ethics starts in 30 minutes in Room 204. See you there!”
+            “Panel on legal ethics starts in 30 minutes in Room 204.”
           </p>
           <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
             <span class="flex items-center">
